@@ -18,31 +18,31 @@ import QuoteGrid from './components/QuoteGrid.vue'
 import NewQuote from './components/NewQuote.vue'
 import Header from './components/Header.vue'
 
-    export default {
-        components: {
-            appQuoteGrid: QuoteGrid,
-            appNewQuote: NewQuote,
-            appHeader: Header
-        },
-        data () {
-            return {
-                quotes: ['Just a quote', 'anotherone'],
-                maxQuotes: 10
+export default {
+    components: {
+        appQuoteGrid: QuoteGrid,
+        appNewQuote: NewQuote,
+        appHeader: Header
+    },
+    data () {
+        return {
+            quotes: ['Just a quote', 'anotherone'],
+            maxQuotes: 10
+        }
+    },
+    methods: {
+        addQuote (data) {
+            if(this.quotes.length < 10) {
+                this.quotes.push(data);
+            } else {
+                alert('Delete a quote before adding another one')
             }
         },
-        methods: {
-            addQuote (data) {
-                if(this.quotes.length < 10) {
-                    this.quotes.push(data);
-                } else {
-                    alert('Delete a quote before adding another one')
-                }
-            },
-            deleteQuote (data) {
-                this.quotes.splice(data, 1);
-            }
+        deleteQuote (data) {
+            this.quotes.splice(data, 1);
         }
     }
+}
 </script>
 
 <style>
