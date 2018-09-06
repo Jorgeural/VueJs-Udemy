@@ -6,7 +6,11 @@
                 <p> {{ text }} No filter</p>
                 <p>{{ text | toLower }} to lower locally registered</p>
                 <p>{{ text | toUpper }} to upper globally registered</p>
-
+                <hr>
+                <input type="text" v-model="filterText">
+                <ul>
+                    <li v-for="(fruit, index) in filteredFruits" :key="index"> {{ fruit }}</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -16,12 +20,21 @@
     export default {
         data () {
             return {
-               text: 'Hello world!'
+               text: 'Hello world!',
+               fruits: ['Apple', 'Pear', 'Melon', 'Mango'],
+               filterText: ''
             }
         },
         filters: {
             'toLower'(value) {
                 return value.toLowerCase();
+            }
+        },
+        computed: {
+            filteredFruits() {
+                return this.fruits.filter((element) => {
+                    return element.match(this.filterText);
+                })
             }
         }   
     }
