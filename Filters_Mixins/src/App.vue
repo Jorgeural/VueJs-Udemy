@@ -11,32 +11,32 @@
                 <ul>
                     <li v-for="(fruit, index) in filteredFruits" :key="index"> {{ fruit }}</li>
                 </ul>
+                <hr>
+                <app-list></app-list>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import List from './List.vue'
+import {fruitMixin} from './fruitMixin.js'
+
     export default {
+        mixins: [fruitMixin],
+        components: {
+            appList: List
+        },
         data () {
             return {
-               text: 'Hello world!',
-               fruits: ['Apple', 'Pear', 'Melon', 'Mango'],
-               filterText: ''
+               text: 'Hello world!'
             }
         },
         filters: {
             'toLower'(value) {
                 return value.toLowerCase();
             }
-        },
-        computed: {
-            filteredFruits() {
-                return this.fruits.filter((element) => {
-                    return element.match(this.filterText);
-                })
-            }
-        }   
+        }  
     }
 </script>
 
