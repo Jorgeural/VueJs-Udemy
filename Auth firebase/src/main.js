@@ -5,9 +5,7 @@ import axios from 'axios'
 import router from './router'
 import store from './store'
 
-axios.defaults.baseURL = 'https://vue-update.firebaseio.com'
-// axios.defaults.headers.common['Authorization'] = 'fasfdsa'
-axios.defaults.headers.get['Accepts'] = 'application/json'
+axios.defaults.baseURL = 'https://udemy-auth-course.firebaseio.com'
 
 const reqInterceptor = axios.interceptors.request.use(config => {
   console.log('Request Interceptor', config)
